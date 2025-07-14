@@ -72,7 +72,6 @@ dependencies {
     modCompileOnly("curse.maven:nethers-delight-496394:3756127") //1.18.2 2.2.0
     modCompileOnly("curse.maven:delightful-637529:4275637") //1.18.2 3.2.1 modrinth 1.19+
     modCompileOnly("maven.modrinth:ars-nouveau:2.9.0") //for delightful
-    modCompileOnly("maven.modrinth:biomesyougo:4Bo5c6or") //1.5.1
     modCompileOnly("maven.modrinth:enders-delight:1.18.2-1.2.1")
     modCompileOnly("maven.modrinth:ends-delight:1.18.2-1.2.1")
     modCompileOnly("maven.modrinth:crabbers-delight:raWodeSb")
@@ -103,7 +102,8 @@ dependencies {
     modCompileOnly("curse.maven:radium-570017:3707226")
 
     modImplementation("com.simibubi.create:create-${minecraftVersion}:${createVersion}:slim") { isTransitive = false }
-    modImplementation("com.jozufozu.flywheel:flywheel-forge-${minecraftVersion}:${flywheelVersion}")
+    modCompileOnly("dev.engine-room.flywheel:flywheel-forge-api-${minecraftVersion}:${flywheelVersion}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-forge-${minecraftVersion}:${flywheelVersion}")
     modImplementation("com.tterrag.registrate:Registrate:${registrateVersion}")
 
     //modRuntimeOnly("curse.maven:configured-457570:4462832")

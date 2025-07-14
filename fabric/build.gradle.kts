@@ -36,7 +36,7 @@ configurations {
 
 val minecraftVersion: String by rootProject
 val modVersion: String by rootProject
-val fabricLoaderVersion: String by rootProject
+val fabricLoaderVersion: String by project
 val fabricApiVersion: String by project
 val architecturyVersion: String by rootProject
 val archivesBaseName: String by rootProject
@@ -49,6 +49,7 @@ val energyVersion: String by project
 val midnightConfigVersion: String by project
 val geckoLibVersion: String by project
 val farmersDelightVersion: String by project
+val structurizedRebornVersion: String by project
 
 dependencies {
     "mappings"(loom.layered {
@@ -96,9 +97,9 @@ dependencies {
     modApi("dev.architectury:architectury-fabric:${architecturyVersion}")
     modApi("teamreborn:energy:${energyVersion}")
     include("teamreborn:energy:${energyVersion}")
-    modImplementation("maven.modrinth:Wd844r7Q:1.18.2-02")//Structurized Reborn
-    include("maven.modrinth:Wd844r7Q:1.18.2-02")//Structurized Reborn
-    modImplementation("software.bernie.geckolib:geckolib-fabric-1.18:${geckoLibVersion}")
+    modImplementation("maven.modrinth:Wd844r7Q:${structurizedRebornVersion}")
+    include("maven.modrinth:Wd844r7Q:${structurizedRebornVersion}")
+    modImplementation("software.bernie.geckolib:geckolib-fabric-1.20.1:${geckoLibVersion}")
     modImplementation("com.github.glitchfiend:TerraBlender-fabric:${minecraftVersion}-${terraBlenderVersion}")
     modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cardinalComponentsVersion}")
     modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cardinalComponentsVersion}")
@@ -109,22 +110,21 @@ dependencies {
     modImplementation("com.github.darkpred.morehitboxes:morehitboxes-fabric-${minecraftVersion}:${moreHitboxesVersion}")
 
     //Optional
-    modCompileOnly("maven.modrinth:jade:MSJGBHIo")
-    modRuntimeOnly("maven.modrinth:jade:MSJGBHIo")
+    modImplementation("maven.modrinth:jade:drol2x1P")
     modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:${reiVersion}")
-    modCompileOnly("maven.modrinth:farmers-delight-fabric:$farmersDelightVersion")
-
+    modImplementation("vectorwing:FarmersDelight:${farmersDelightVersion}") {
+        exclude(group = "net.fabricmc")
+    }
     //FD addons
-    modCompileOnly("maven.modrinth:oceans-delight:1.0.0")
-    modCompileOnly("curse.maven:nethers-delight-fabric-701831:4291741") //1.18.2 2.0.0
-    modCompileOnly("maven.modrinth:biomesyougo:1.5.1")
-    modCompileOnly("maven.modrinth:ends-delight:1.18.2-beta-1.0")
-    modCompileOnly("curse.maven:farmers-respite-fabric-811003:4344002") //1.18.2 1.0.0
-    modCompileOnly("maven.modrinth:pineapple-delight:o28puzf2") //1.18.2 1.0.13
-    modCompileOnly("curse.maven:cultural-delights-fabric-807107:4329072") //1.18.2 0.14.7
-    modCompileOnly("curse.maven:coffee-delight-835597:4626094") //1.18.2 1.3
-    modCompileOnly("maven.modrinth:casualness-delight:1.18.2-0.4")
-    modCompileOnly("curse.maven:expanded-delight-620770:4362782") //1.18.2 0.1.9.2
+    modCompileOnly("maven.modrinth:oceans-delight:fdrf-fabric-1.0.2-1.20")
+    modCompileOnly("curse.maven:nethers-delight-refabricated:ukA6oZlz")
+    modCompileOnly("maven.modrinth:ends-delight:kNmI1WJu")
+    modCompileOnly("curse.maven:farmers-respite-fabric-811003:5252387")
+    modCompileOnly("maven.modrinth:pineapple-delight:x85UwMri")
+    modCompileOnly("curse.maven:cultural-delights-fabric-807107:5510598")
+    modCompileOnly("curse.maven:coffee-delight-835597:5194707")
+    modCompileOnly("maven.modrinth:casualness-delight:XjsRMY8V")
+    modCompileOnly("curse.maven:expanded-delight-620770:5708081")
 
 
     //Dev only

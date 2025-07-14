@@ -7,6 +7,7 @@ val archivesBaseName: String by rootProject
 val parchmentDate: String by rootProject
 val moreHitboxesVersion: String by rootProject
 val reiVersion: String by rootProject
+val minecraftVersion: String by rootProject
 
 architectury {
     common(enabledPlatforms.split(","))
@@ -25,7 +26,7 @@ loom {
 dependencies {
     "mappings"(loom.layered {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-1.18.2:$parchmentDate@zip")
+        parchment("org.parchmentmc.data:parchment-${minecraftVersion}:$parchmentDate@zip")
     })
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
